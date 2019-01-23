@@ -43,7 +43,7 @@ Node* InsertNodBefr(Node* cur, int value)
   return newn;
 }
 
-Node* Search_Node (char value , Node* head)
+Node* Search_Node (int value , Node* head)
 {
   Node* cur =  head;
   for (;;)
@@ -107,6 +107,7 @@ void PrintList ( Node* head)
 
 void DeleteNode(int value,  Node* head)
 {
+
   Node* ptr =Search_Node(value  ,head);
   if ( ptr -> next == NULL && ptr -> prev == NULL)
   {
@@ -127,6 +128,8 @@ void DeleteNode(int value,  Node* head)
   }
   ptr->data = 0 ;
   ptr = NULL;
+  delete ptr;
+
 }
 
 int DeleteList (Node* head)
@@ -138,10 +141,12 @@ int DeleteList (Node* head)
     Node* tmp = head;
     while (head != NULL)
     {
+      tmp = head;
       head = head -> next;
       tmp -> data = 0;
       tmp -> next = NULL;
       tmp = NULL;
+      delete tmp;
     }
   printf("Empty\n");
 }
